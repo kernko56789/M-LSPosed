@@ -2,7 +2,7 @@ name: Build LSPosed
 
 on:
   push:
-    branches: [ main, master ] # 触发分支
+    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 确保拉取子模块
+          submodules: recursive
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -25,10 +25,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew assembleRelease  # 或具体的构建任务（如 :core:assembleRelease）
+        run: ./gradlew assembleRelease
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  
         with:
           name: LSPosed-Build
           path: |
